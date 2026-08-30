@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="pt-MZ">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CurtainShop MZ — Cortinas importadas para Maputo, Gaza e Inhambane</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --sand:#F6F1E7;
+    --sand-2:#EFE6D2;
+    --charcoal:#2B2620;
+    --teal:#0F5C56;
+    --teal-dark:#0A413D;
+    --brass:#C08A3E;
+    --rust:#A94A34;
+    --line:#DCD0B4;
+    --sand-rgb: 246,241,231;
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+
+  html{scroll-behavior:smooth;}
+
+  body{
+    background:var(--sand);
+    color:var(--charcoal);
+    font-family:'Work Sans', sans-serif;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+
+  h1,h2,h3{
+    font-family:'Newsreader', serif;
+    font-weight:500;
+    letter-spacing:-0.01em;
+    color:var(--charcoal);
+  }
+
+  .eyebrow{
+    font-size:0.75rem;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    font-weight:600;
+    color:var(--teal);
+  }
+
+  a{color:inherit;}
+
+  img,svg{display:block; max-width:100%;}
+
+  .wrap{
+    max-width:1080px;
+    margin:0 auto;
+    padding:0 24px;
+  }
+
+  /* ---------- Fold divider (signature element) ---------- */
+  .fold-divider{
+    width:100%;
+    height:28px;
+    display:block;
+  }
+  .fold-divider path{
+    fill:none;
+    stroke:var(--line);
+    stroke-width:1.5;
+  }
+
+  /* ---------- Header ---------- */
+  header{
+    position:sticky;
+    top:0;
+    z-index:50;
+    background:rgba(var(--sand-rgb), 0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:16px 24px;
+    max-width:1080px;
+    margin:0 auto;
+  }
+  .logo{
+    font-family:'Newsreader', serif;
+    font-style:italic;
+    font-size:1.35rem;
+    color:var(--teal-dark);
+  }
+  .logo span{color:var(--rust); font-style:normal;}
+  nav ul{
+    list-style:none;
+    display:flex;
+    gap:28px;
+  }
+  nav a{
+    text-decoration:none;
+    font-size:0.92rem;
+    font-weight:500;
+    color:var(--charcoal);
+    position:relative;
+  }
+  nav a::after{
+    content:"";
+    position:absolute;
+    left:0; bottom:-4px;
+    width:0; height:1.5px;
+    background:var(--rust);
+    transition:width 0.25s ease;
+  }
+  nav a:hover::after{width:100%;}
+  .nav-cta{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    background:var(--teal);
+    color:var(--sand);
+    padding:9px 16px;
+    border-radius:100px;
+    font-size:0.85rem;
+    font-weight:600;
+    text-decoration:none;
+    white-space:nowrap;
+    transition:background 0.2s ease;
+  }
+  .nav-cta:hover{background:var(--teal-dark);}
+  .menu-toggle{display:none;}
+
+  @media (max-width:760px){
+    nav ul{display:none;}
+    .nav-inner{padding:14px 20px;}
+  }
+
+  /* ---------- Hero with curtain reveal ---------- */
+  .hero{
+    position:relative;
+    min-height:88vh;
+    display:flex;
+    align-items:center;
+    overflow:hidden;
+    background:linear-gradient(180deg, var(--sand) 0%, var(--sand-2) 100%);
+  }
+  .hero-content{
+    position:relative;
+    z-index:5;
+    max-width:1080px;
+    margin:0 auto;
+    padding:80px 24px 100px;
+    width:100%;
+  }
+  .hero-content h1{
+    font-size:clamp(2.1rem, 5.2vw, 3.6rem);
+    max-width:720px;
+    line-height:1.12;
+    margin-bottom:22px;
+  }
+  .hero-content h1 em{
+    font-style:italic;
+    color:var(--rust);
+  }
+  .hero-sub{
+    font-size:1.05rem;
+    max-width:480px;
+    color:#4A4238;
+    margin-bottom:34px;
+  }
+  .hero-ctas{
+    display:flex;
+    gap:14px;
+    flex-wrap:wrap;
+  }
+  .btn-primary{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    background:var(--rust);
+    color:var(--sand);
+    padding:14px 26px;
+    border-radius:100px;
+    text-decoration:none;
+    font-weight:600;
+    font-size:0.98rem;
+    transition:transform 0.2s ease, background 0.2s ease;
+  }
+  .btn-primary:hover{background:#8E3D29; transform:translateY(-2px);}
+  .btn-secondary{
+    display:inline-flex;
+    align-items:center;
+    padding:14px 22px;
+    border-radius:100px;
+    border:1px solid var(--charcoal);
+    text-decoration:none;
+    font-weight:500;
+    font-size:0.98rem;
+    color:var(--charcoal);
+  }
+
+  /* curtain panels */
+  .curtain-panel{
+    position:absolute;
+    top:0; bottom:0;
+    width:52%;
+    background:linear-gradient(90deg, var(--teal-dark), var(--teal) 60%, var(--teal-dark));
+    z-index:10;
+    box-shadow:inset -20px 0 40px rgba(0,0,0,0.18);
+  }
+  .curtain-panel.left{
+    left:0;
+    border-radius:0 40px 40px 0;
+    animation: openLeft 1.4s cubic-bezier(.65,0,.35,1) 0.3s forwards;
+  }
+  .curtain-panel.right{
+    right:0;
+    border-radius:40px 0 0 40px;
+    animation: openRight 1.4s cubic-bezier(.65,0,.35,1) 0.3s forwards;
+  }
+  .curtain-panel .pleats{
+    position:absolute; inset:0;
+    background-image: repeating-linear-gradient(90deg,
+      rgba(255,255,255,0.06) 0px,
+      rgba(255,255,255,0.06) 2px,
+      transparent 2px,
+      transparent 26px);
+  }
+  @keyframes openLeft{
+    to{ transform:translateX(-102%); }
+  }
+  @keyframes openRight{
+    to{ transform:translateX(102%); }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .curtain-panel{display:none;}
+  }
+
+  /* ---------- Sections ---------- */
+  section{padding:88px 0;}
+  .section-head{
+    max-width:560px;
+    margin-bottom:48px;
+  }
+  .section-head h2{
+    font-size:clamp(1.6rem, 3.2vw, 2.2rem);
+    margin-top:8px;
+  }
+
+  /* About */
+  .about-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:56px;
+    align-items:start;
+  }
+  .about-grid p{
+    color:#4A4238;
+    margin-bottom:16px;
+    font-size:1.02rem;
+  }
+  .about-figure{
+    border:1px solid var(--line);
+    border-radius:4px;
+    padding:28px;
+    background:var(--sand-2);
+  }
+  .about-figure .num{
+    font-family:'Newsreader', serif;
+    font-style:italic;
+    font-size:2.4rem;
+    color:var(--rust);
+    display:block;
+    margin-bottom:6px;
+  }
+  .about-figure .label{
+    font-size:0.85rem;
+    color:#5A5142;
+  }
+  .figure-row{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:16px;
+  }
+
+  @media (max-width:760px){
+    .about-grid{grid-template-columns:1fr; gap:32px;}
+  }
+
+  /* Products */
+  .products-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:24px;
+  }
+  .product-card{
+    background:var(--sand-2);
+    border:1px solid var(--line);
+    border-radius:6px;
+    padding:30px 26px;
+    transition:transform 0.25s ease, box-shadow 0.25s ease;
+  }
+  .product-card:hover{
+    transform:translateY(-4px);
+    box-shadow:0 14px 30px rgba(43,38,32,0.08);
+  }
+  .product-card .swatch{
+    width:100%;
+    height:64px;
+    border-radius:4px;
+    margin-bottom:18px;
+  }
+  .swatch.blackout{background:linear-gradient(135deg, #2B2620, #4A4238);}
+  .swatch.voil{background:linear-gradient(135deg, #EFE6D2, #F6F1E7); border:1px solid var(--line);}
+  .swatch.decor{background:linear-gradient(135deg, var(--teal), var(--brass));}
+  .product-card h3{
+    font-size:1.2rem;
+    margin-bottom:8px;
+    font-weight:500;
+  }
+  .product-card p{
+    font-size:0.94rem;
+    color:#5A5142;
+  }
+
+  @media (max-width:760px){
+    .products-grid{grid-template-columns:1fr;}
+  }
+
+  /* Coverage */
+  .coverage{
+    background:var(--teal-dark);
+    color:var(--sand);
+  }
+  .coverage .section-head h2, .coverage .eyebrow{color:var(--sand);}
+  .coverage .eyebrow{color:#B9E0D9;}
+  .coverage-list{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:20px;
+  }
+  .coverage-item{
+    border:1px solid rgba(246,241,231,0.22);
+    border-radius:6px;
+    padding:26px;
+  }
+  .coverage-item h3{
+    color:var(--sand);
+    font-size:1.3rem;
+    margin-bottom:8px;
+  }
+  .coverage-item p{
+    font-size:0.9rem;
+    color:#CFE4DF;
+  }
+  @media (max-width:760px){
+    .coverage-list{grid-template-columns:1fr;}
+  }
+
+  /* How it works */
+  .steps{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:36px;
+  }
+  .step{
+    padding-top:20px;
+    border-top:2px solid var(--rust);
+  }
+  .step .step-eyebrow{
+    font-family:'Newsreader', serif;
+    font-style:italic;
+    color:var(--rust);
+    font-size:1.4rem;
+    display:block;
+    margin-bottom:10px;
+  }
+  .step h3{
+    font-size:1.1rem;
+    margin-bottom:8px;
+    font-weight:500;
+  }
+  .step p{
+    font-size:0.94rem;
+    color:#5A5142;
+  }
+  @media (max-width:760px){
+    .steps{grid-template-columns:1fr;}
+  }
+
+  /* Final CTA */
+  .final-cta{
+    text-align:center;
+    padding:100px 24px;
+  }
+  .final-cta h2{
+    font-size:clamp(1.8rem, 4vw, 2.6rem);
+    max-width:600px;
+    margin:0 auto 26px;
+  }
+
+  /* Footer */
+  footer{
+    background:var(--charcoal);
+    color:var(--sand-2);
+    padding:56px 0 28px;
+  }
+  .footer-grid{
+    display:grid;
+    grid-template-columns:1.4fr 1fr 1fr;
+    gap:36px;
+    margin-bottom:40px;
+  }
+  footer .logo{color:var(--sand);}
+  footer .logo span{color:var(--brass);}
+  footer p{color:#B7AF9E; font-size:0.92rem; margin-top:10px; max-width:320px;}
+  footer h4{
+    font-size:0.8rem;
+    text-transform:uppercase;
+    letter-spacing:0.1em;
+    color:#8B8371;
+    margin-bottom:14px;
+  }
+  footer ul{list-style:none;}
+  footer li{margin-bottom:10px;}
+  footer a{
+    color:#D8D0BE;
+    text-decoration:none;
+    font-size:0.92rem;
+  }
+  footer a:hover{color:var(--sand);}
+  .footer-bottom{
+    border-top:1px solid rgba(246,241,231,0.12);
+    padding-top:20px;
+    font-size:0.8rem;
+    color:#8B8371;
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:10px;
+  }
+  @media (max-width:760px){
+    .footer-grid{grid-template-columns:1fr; gap:28px;}
+  }
+
+  /* Sticky mobile WhatsApp bar */
+  .sticky-wa{
+    position:fixed;
+    bottom:18px;
+    right:18px;
+    z-index:60;
+    background:var(--rust);
+    color:var(--sand);
+    width:56px;
+    height:56px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-decoration:none;
+    box-shadow:0 8px 22px rgba(169,74,52,0.4);
+  }
+  .sticky-wa svg{width:26px; height:26px;}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav-inner">
+    <div class="logo">Curtain<span>Shop</span> MZ</div>
+    <nav>
+      <ul>
+        <li><a href="#sobre">Sobre</a></li>
+        <li><a href="#produtos">Produtos</a></li>
+        <li><a href="#cobertura">Cobertura</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+    <a class="nav-cta" href="https://wa.me/258851402874?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20as%20cortinas." target="_blank" rel="noopener">Falar no WhatsApp</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="curtain-panel left"><div class="pleats"></div></div>
+  <div class="curtain-panel right"><div class="pleats"></div></div>
+  <div class="hero-content">
+    <span class="eyebrow">Cortinas importadas · Maputo · Gaza · Inhambane</span>
+    <h1 style="margin-top:14px;">A cortina certa muda <em>como a luz</em> entra em tua casa.</h1>
+    <p class="hero-sub">Importamos tecidos de qualidade — blackout, voil e decorativos — e tratamos tudo pelo WhatsApp: do pedido à entrega em casa.</p>
+    <div class="hero-ctas">
+      <a class="btn-primary" href="https://wa.me/258851402874?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20as%20cortinas." target="_blank" rel="noopener">
+        Falar no WhatsApp
+      </a>
+      <a class="btn-secondary" href="#produtos">Ver tecidos</a>
+    </div>
+  </div>
+</section>
+
+<svg class="fold-divider" viewBox="0 0 1080 28" preserveAspectRatio="none"><path d="M0,14 Q27,0 54,14 T108,14 T162,14 T216,14 T270,14 T324,14 T378,14 T432,14 T486,14 T540,14 T594,14 T648,14 T702,14 T756,14 T810,14 T864,14 T918,14 T972,14 T1026,14 T1080,14"/></svg>
+
+<section id="sobre">
+  <div class="wrap">
+    <div class="about-grid">
+      <div>
+        <span class="eyebrow">Sobre nós</span>
+        <h2 style="margin-top:10px; margin-bottom:20px;">Começámos porque era difícil encontrar cortinas boas sem pagar preço de luxo.</h2>
+        <p>Trabalhamos direto com fornecedores para trazer tecidos de qualidade para Moçambique, a preços justos. Sem intermediários a inflacionar o preço, sem complicação no processo.</p>
+        <p>Cada pedido é tratado por WhatsApp, do primeiro "olá" até a cortina pendurada na tua janela. Medimos contigo, sugerimos o tecido certo para a divisão, e entregamos no prazo combinado.</p>
+      </div>
+      <div class="figure-row">
+        <div class="about-figure">
+          <span class="num">3</span>
+          <span class="label">Províncias cobertas: Maputo, Gaza, Inhambane</span>
+        </div>
+        <div class="about-figure">
+          <span class="num">100%</span>
+          <span class="label">Pedido e acompanhamento por WhatsApp</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<svg class="fold-divider" viewBox="0 0 1080 28" preserveAspectRatio="none"><path d="M0,14 Q27,0 54,14 T108,14 T162,14 T216,14 T270,14 T324,14 T378,14 T432,14 T486,14 T540,14 T594,14 T648,14 T702,14 T756,14 T810,14 T864,14 T918,14 T972,14 T1026,14 T1080,14"/></svg>
+
+<section id="produtos">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">O que oferecemos</span>
+      <h2>Um tecido para cada divisão da casa.</h2>
+    </div>
+    <div class="products-grid">
+      <div class="product-card">
+        <div class="swatch blackout"></div>
+        <h3>Blackout</h3>
+        <p>Bloqueiam a luz por completo. Ideais para quartos e para quem trabalha por turnos.</p>
+      </div>
+      <div class="product-card">
+        <div class="swatch voil"></div>
+        <h3>Voil / Sheer</h3>
+        <p>Leves e translúcidas. Deixam entrar luz suave sem perder a privacidade.</p>
+      </div>
+      <div class="product-card">
+        <div class="swatch decor"></div>
+        <h3>Decorativas</h3>
+        <p>Texturas e cores para salas e espaços de receber visitas.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="cobertura" class="coverage">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Onde entregamos</span>
+      <h2>Cobertura em três províncias.</h2>
+    </div>
+    <div class="coverage-list">
+      <div class="coverage-item">
+        <h3>Maputo</h3>
+        <p>Entrega na cidade e arredores. Prazo combinado no WhatsApp.</p>
+      </div>
+      <div class="coverage-item">
+        <h3>Gaza</h3>
+        <p>Entrega nos principais centros da província.</p>
+      </div>
+      <div class="coverage-item">
+        <h3>Inhambane</h3>
+        <p>Entrega na cidade e zonas próximas.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Como funciona</span>
+      <h2>Três passos, tudo pelo WhatsApp.</h2>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <span class="step-eyebrow">01</span>
+        <h3>Escolhe o tecido e a medida</h3>
+        <p>Manda-nos a medida da janela e o tipo de cortina que procuras.</p>
+      </div>
+      <div class="step">
+        <span class="step-eyebrow">02</span>
+        <h3>Confirmamos pedido e prazo</h3>
+        <p>Confirmamos o preço, a forma de pagamento e a data de entrega.</p>
+      </div>
+      <div class="step">
+        <span class="step-eyebrow">03</span>
+        <h3>Recebes em casa</h3>
+        <p>A cortina chega pronta a instalar, na tua morada.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="final-cta">
+  <span class="eyebrow">Pronto para começar?</span>
+  <h2 style="margin-top:14px;">Manda-nos a medida da tua janela e tratamos do resto.</h2>
+  <a class="btn-primary" href="https://wa.me/258851402874?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20as%20cortinas." target="_blank" rel="noopener">Falar no WhatsApp</a>
+</section>
+
+<footer id="contacto">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <div class="logo">Curtain<span>Shop</span> MZ</div>
+        <p>Cortinas importadas para Maputo, Gaza e Inhambane. Pedido, acompanhamento e entrega, tudo pelo WhatsApp.</p>
+      </div>
+      <div>
+        <h4>Navegação</h4>
+        <ul>
+          <li><a href="#sobre">Sobre</a></li>
+          <li><a href="#produtos">Produtos</a></li>
+          <li><a href="#cobertura">Cobertura</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contacto</h4>
+        <ul>
+          <li><a href="https://wa.me/258851402874" target="_blank" rel="noopener">WhatsApp</a></li>
+          <li><a href="https://www.instagram.com/cleytondacal" target="_blank" rel="noopener">Instagram</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 CurtainShop MZ</span>
+      <span>Maputo · Gaza · Inhambane</span>
+    </div>
+  </div>
+</footer>
+
+<a class="sticky-wa" href="https://wa.me/258851402874?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20as%20cortinas." target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.2-1.8-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-1 1.2-.2.2-.4.2-.6.1-.3-.1-1.3-.5-2.5-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.4.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5-.1-.1-.7-1.6-.9-2.2-.2-.5-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4s1.1 2.8 1.2 3c.1.2 2.1 3.3 5.2 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.3-.7.3-1.3.2-1.4-.1-.1-.3-.2-.6-.3z"/><path d="M12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.7 1.5 5.3L2 22l4.8-1.5C8.3 21.5 10.1 22 12 22c5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18c-1.7 0-3.3-.5-4.7-1.3l-.3-.2-3.3 1 1-3.2-.2-.3C3.5 14.6 3 13.3 3 12c0-5 4-9 9-9s9 4 9 9-4 9-9 9z"/></svg>
+</a>
+
+</body>
+</html>
